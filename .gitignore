@@ -1,0 +1,8 @@
+# Real client exports never go in this repo
+*.xlsx
+*.xls
+*.qbo
+exports/
+.DS_Store
+Thumbs.db
+desktop.ini

@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Office Command Center</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">
+      <div class="logo" aria-hidden="true">NL</div>
+      <div>
+        <h1 id="firm"></h1>
+        <p id="subtitle" class="muted"></p>
+      </div>
+    </div>
+    <div class="top-actions">
+      <button id="briefBtn" class="btn">Morning brief</button>
+    </div>
+  </header>
+
+  <nav class="views" id="views" aria-label="Dashboard view"></nav>
+
+  <main>
+    <section class="kpis" id="kpis" aria-label="Key numbers"></section>
+
+    <section class="grid-2">
+      <div class="card">
+        <div class="card-head">
+          <h2>Needs attention today</h2>
+          <span class="muted small" id="attentionCount"></span>
+        </div>
+        <ol class="attention" id="attention"></ol>
+        <button class="link-btn" id="attentionMore" hidden>Show all</button>
+      </div>
+      <div class="card">
+        <div class="card-head"><h2>Close progress</h2><span class="muted small" id="progressLabel"></span></div>
+        <div id="progress"></div>
+        <div class="card-head sub"><h3 id="scorecardTitle"></h3></div>
+        <div class="table-wrap"><table class="scorecard" id="scorecard"></table></div>
+      </div>
+    </section>
+
+    <section class="card">
+      <div class="card-head wrap">
+        <h2>Clients</h2>
+        <div class="controls">
+          <div class="chips" id="chips" role="group" aria-label="Filter clients"></div>
+          <input type="search" id="search" placeholder="Search clients or accountants" aria-label="Search clients">
+        </div>
+      </div>
+      <div class="table-wrap"><table class="clients" id="clients"></table></div>
+    </section>
+
+    <section class="card">
+      <div class="card-head wrap">
+        <h2>To-dos</h2>
+        <span class="muted small">Demo: changes save in this browser only. The live version writes to the control sheet.</span>
+      </div>
+      <form class="todo-form" id="todoForm">
+        <select id="todoClient" aria-label="Client" required></select>
+        <select id="todoOwner" aria-label="Assign to" required></select>
+        <input id="todoTask" placeholder="What needs to happen?" aria-label="Task" required>
+        <input id="todoDue" type="date" aria-label="Due date" required>
+        <button class="btn primary" type="submit">Assign</button>
+      </form>
+      <ul class="todos" id="todos"></ul>
+    </section>
+  </main>
+
+  <footer class="muted small" id="footer"></footer>
+
+  <div class="scrim" id="scrim" hidden></div>
+  <aside class="drawer" id="drawer" aria-hidden="true" aria-labelledby="drawerTitle" role="dialog"></aside>
+
+  <div class="modal" id="briefModal" hidden role="dialog" aria-labelledby="briefTitle">
+    <div class="modal-box">
+      <div class="card-head"><h2 id="briefTitle">Morning brief</h2><button class="icon-btn" data-close-brief aria-label="Close">&times;</button></div>
+      <textarea id="briefText" readonly></textarea>
+      <div class="modal-actions">
+        <button class="btn" data-close-brief>Close</button>
+        <button class="btn primary" id="copyBrief">Copy</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="config.js"></script>
+  <script src="data/control-sheet.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
